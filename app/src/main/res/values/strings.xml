@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Emoji Game</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="enter_button">Enter</string>
+    <string name="prompt">Find...</string>
+</resources>
