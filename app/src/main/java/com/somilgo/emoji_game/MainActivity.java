@@ -1,5 +1,8 @@
 package com.somilgo.emoji_game;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -21,36 +24,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TextView find = (TextView) (findViewById(R.id.emojiSpace));
-        int[] emojis = Functions.getEmojiList();
-        final int randomEmoji = emojis[(int)(Math.random()*emojis.length)];
 
-        find.setText(Functions.getEmojiByUnicode(randomEmoji));
-        final Button enterButton = (Button) (findViewById(R.id.button));
-        final EditText field = (EditText) (findViewById(R.id.input));
-        enterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    int correct = (Character.codePointAt(Functions.getEmojiByUnicode(randomEmoji).toString(), 0));
-                    int guessed = (Character.codePointAt(field.getText().toString(), 0));
-
-                    if (correct == guessed)
-                    {
-                        find.setText("Nice!");
-                    }
-                }
-                catch (Exception e){
-
-                }
-
-
-
-
-            }
-        });
-
-
+        final TextView highscore_display = (TextView) findViewById(R.id.highscore_view);
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        highscore_display.setText("Most Emojis in 1 Minute: " + prefs.getInt("highscore",0));
     }
 
     @Override
@@ -74,4 +51,19 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void onClickTimedGame(View view)
+    {
+        Intent timedGameIntent = new Intent(this, Timed_Game.class);
+        startActivity(timedGameIntent);
+
+    }
+
+    public void onClickHighestScore(View view)
+    {
+        Intent scoreGameIntent = new Intent(this, HighestScore.class);
+        startActivity(scoreGameIntent);
+    }
+
 }
