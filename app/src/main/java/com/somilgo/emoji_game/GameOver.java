@@ -36,6 +36,15 @@ public class GameOver extends Activity {
                 editor.commit();
             }
         }
+        else
+        {
+            score_view.setText("You found 5 emojis in " + score + " seconds");
+            if(prefs.getInt("highscore2", 99999999) > score)
+            {
+                editor.putInt("highscore2", score);
+                editor.commit();
+            }
+        }
     }
 
     public void onClickMain(View view)

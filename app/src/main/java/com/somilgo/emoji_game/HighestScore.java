@@ -18,6 +18,7 @@ public class HighestScore extends Activity {
     private int randomEmoji;
     private int[] emojis;
     private int time;
+    private CountDownTimer CountUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +65,13 @@ public class HighestScore extends Activity {
         final TextView timer = (TextView) findViewById(R.id.timer);
         time = 0;
 
-        new CountDownTimer(900000000,1000)
+        CountUp = new CountDownTimer(900000000,1000)
         {
             public void onTick(long millisUntilFinished)
             {
                 time++;
-                timer.setText(time);
-                if (score >=10)
+                timer.setText(""+time);
+                if (score >=5)
                 {
                     gameOver();
                 }
@@ -89,11 +90,13 @@ public class HighestScore extends Activity {
 
     public void gameOver()
     {
+        CountUp.cancel();
         Intent gameOverIntent = new Intent(this, GameOver.class);
         Bundle extras = new Bundle();
-        extras.putInt("score",score);
+        extras.putInt("score",time);
         extras.putBoolean("timed",false);
         gameOverIntent.putExtras(extras);
+        score = 0;
         startActivity(gameOverIntent);
     }
 

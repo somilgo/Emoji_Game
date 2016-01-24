@@ -5,38 +5,57 @@
     android:padding="30dp"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#BBE2EF"
+    android:layout_centerHorizontal="true"
+
     >
 
-    <TextView
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/the_emoji_game"
-        android:gravity="center"
-        android:padding="30dp"
-        android:textSize="50dp"
-
-        />
+        android:src="@drawable/emoji"
+        android:layout_marginBottom="20dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/timed_game_button"
+        android:text="Minute To Win It"
         android:padding="20dp"
+        android:textSize="25dp"
+        android:background="@drawable/emojibutton"
         android:onClick="onClickTimedGame"
         android:textAllCaps="false"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/highest_score_button"
+        android:text="5 Emoji Challenge"
+        android:layout_marginTop="10dp"
+        android:textSize="25dp"
+        android:background="@drawable/minutebutton"
         android:padding="20dp"
         android:onClick="onClickHighestScore"
         android:textAllCaps="false"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="50dp"
+        android:padding="30dp"
         android:text="@string/high_score_deliver"
-        android:textSize="25dp"
+        android:textSize="15dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
         android:id="@+id/highscore_view"
+        android:textColor="#000000"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:id="@+id/highscore2_view"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:text="Your second score is"
+        android:textColor="#000000"/>
 
 </LinearLayout>

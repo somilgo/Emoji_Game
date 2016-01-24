@@ -3,6 +3,7 @@ package com.somilgo.emoji_game;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import org.apache.commons.lang.StringEscapeUtils;
+import org.w3c.dom.Text;
 
 import java.nio.charset.Charset;
 
@@ -27,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView highscore_display = (TextView) findViewById(R.id.highscore_view);
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-        highscore_display.setText("Most Emojis in 1 Minute: " + prefs.getInt("highscore",0));
+        highscore_display.setText("Minute To Win It Record: " + prefs.getInt("highscore",0) + " emojis");
+        final TextView highscore2_display = (TextView) findViewById(R.id.highscore2_view);
+        highscore2_display.setText("5 Emoji Challenge Record: " + prefs.getInt("highscore2",0)+" seconds");
     }
 
     @Override
